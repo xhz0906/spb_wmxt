@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="hi.wmxfd.mapper.SysUserMapper">
+    <!--通过用户名查询用户-->
+    <select id="findUserInfo" parameterType="string" resultType="sysUser">
+        select * from tb_sys_user u where u.loginName=#{loginName}
+    </select>
+
+    <select id="findRoleId" parameterType="string" resultType="int">
+        select ur.role_id
+        from
+        tb_sys_user u,
+        tb_user_role ur
+        where
+        u.userid=ur.user_id
+        and u.loginName=#{loginName}
+    </select>
+    <select id="findPermissionInfo" parameterType="string" resultType="hi.wmxfd.pojo.SysPermission">
+        select p.*
+        from
+        tb_sys_user        u,
+        tb_sys_role        r,
+        tb_sys_permission  p,
+        tb_user_role       ur,
+        tb_role_permission rp
+    where
+        u.userid = ur.user_id
+        and ur.role_id = r.role_id
+        and r.role_id = rp.role_id
+        and rp.permission_id = p.permission_id
+        and u.loginName=#{loginName}
+    </select>
+</mapper>
