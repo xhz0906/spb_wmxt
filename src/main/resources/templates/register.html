@@ -22,7 +22,7 @@
     <!--[if lt IE 9]><link rel="stylesheet" type="text/css" href="css/frontPage-ie8-fix.css" /><![endif]-->
     <!--[if lte IE 10]><script>document.createElement('footer');document.createElement('header');document.createElement('nav');document.createElement('section');document.createElement('article');</script><![endif]-->
     <!--[if lte IE 7]><script>window.onload=function(){location.href="/ie6warning/"}</script><![endif]-->
-    <title>登录</title>
+    <title>注册</title>
     <script type="text/javascript">
         
         (function(document, screen) {
@@ -41,7 +41,7 @@
                     <h1 class="logo" title="外卖超人">
                         <a href="index.html"></a>
                     </h1>
-                    <span class="page-name"> | 登录</span>
+                    <span class="page-name"> | 注册</span>
                 </section>
                 
             
@@ -53,44 +53,54 @@
             
     <div class="main-inner">
         
-            <div class="log-box" id="loginPageBox">
-                <div class="form-group w275">
-                    <label for="lPhone">手机号码</label>
-                    <span class="fs12 fr">没有注册 ？ <a href="/account/register/" class="yo">立即注册</a></span>
-                    <input id="lPhone" maxlength="11" type="text" class="form-text" placeholder="输入您的手机号码"/></label>
-                </div>
-                <div class="form-error-message"></div>
-                <div class="form-group w275">
-                    <label  for="lPass" >登录密码</label>
-                    <input id="lPass" maxlength="10" type="password" class="form-text" onpaste="return false" placeholder="请输入登录密码"/></label>
-                </div>
-                <div class="form-error-message"></div>
-                
+    <div class="log-box" id="registerPageBox">
+        <div class="form-group w275">
+            <label for="">手机号码</label>
+            <input type="text" id="rPhone" maxlength="11" class="form-text" placeholder="请输入你的手机号码" />
+        </div>
+        <div class="form-error-message"></div>
+
+        <div class="captcha-wrap">
+            <div class="captcha-box" id="captchaBox" style="margin-left: -300px">
+                <div class="captcha-item">
                     <div class="form-group captcha clearfix">
-                
-                    <input id="lCaptcha" type="text" class="form-text" placeholder="请输入验证码"/>
-                    <span><img id="captchaImg" _src="/captcha/" src="/captcha/" alt="验证码"/></span>
-                </div>
-                <div class="form-error-message"></div>
-                <div class="form-group checkbox clearfix">
-                    <label class="fl fs12">
-                        <input id="lRemember" type="checkbox" value="true"> 记住我
-                    </label>
-                    <span class="fr fs12"><a class="yo" target="_black" href="/account/password/reset_via_mobile/">忘记密码</a></span>
-                </div>
-                <div>
-                    <button class="form-btn" id="loginPageBtn">登录</button>
-                </div>
-                <div class="code-box clearfix">
-                    <img src="images/mobile_url_qr.png" />
-                    <div class="font-box">
-                        <div class="font">
-                            打开手机wap页<span>扫一扫，美味随身订！</span>
-                        </div>
+                        <input type="text" id="rCaptcha" class="form-text" placeholder="短信验证码"/>
+                        <input type="button" id="getCaptcha"  class="captcha-btn" value="获取验证码"/>
                     </div>
+                    <div class="form-error-message"></div>
+                </div>
+                <div class="captcha-item">
+                    <div class="form-group captcha clearfix">
+                        <input type="text" id="imgCaptcha" disabled="disabled" maxlength="4" class="form-text" placeholder="输入验证码"/>
+                        <span><img id="captchaImg" _src="/captcha/" src="/captcha/" alt="验证码"/></span>
+                    </div>
+                    <div class="form-error-message"></div>
                 </div>
             </div>
+        </div>
+
+        <div class="form-group w275">
+            <label for="">登录密码</label>
+            <input type="password" id="rPass" maxlength="10" class="form-text" onpaste="return false" placeholder="输入登录密码 6-10个字符"/>
+        </div>
+        <div class="form-error-message"></div>
+        <div class="form-group w275">
+            <input type="password" id="rPass2" maxlength="10" class="form-text" onpaste="return false" placeholder="输入登录密码 6-10个字符"/>
+        </div>
+        <div class="form-error-message"></div>
+
+        <div class="checkbox form-group clearfix mb5">
+            <input type="checkbox" checked="checked" id="rAgree" value="true">
+            <label for="rAgree" class="fl fs12">我同意外卖超人</label>
+            <span class="fl fs12"><a class="yo" target="_blank" href="/terms-and-conditions/">"注册条款"</a></span>
+        </div>
+        <div class="form-error-message"></div>
+        <div>
+            <button class="form-btn" id="registerPageBtn">确认注册</button>
+        </div>
         
+    </div>
+
     </div>
 
         </div>
@@ -118,7 +128,11 @@
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
     
     <script>
-    var userVaildate = '/ajax/user_login/';
+        // use new sms code url
+        var ajax_customer_user_register_start = '/ajax/customer_user_register_start/';
+        var common_sms_code = '/ajax/common_sms_code/';
+        var common_validate_sms_code = '/ajax/common_validate_sms_code/';
+        var ajax_customer_user_register_register = '/ajax/customer_user_register_register/';
     </script>
 <script type="text/javascript" src="js/loginVaildate.js"></script>
 
