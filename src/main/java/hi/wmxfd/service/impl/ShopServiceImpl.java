@@ -6,11 +6,12 @@ import hi.wmxfd.service.ShopService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 @Service
 public class ShopServiceImpl implements ShopService {
-    @Autowired
+    @Resource
     private ShopMapper shopMapper;
     @Override
     public List<Shopping> findAllShopInfo() {
