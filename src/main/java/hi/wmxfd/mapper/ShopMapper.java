@@ -7,9 +7,14 @@ import java.util.List;
 
 @Mapper
 public interface ShopMapper {
-    /**查询所有店铺信息
+    /**分页展示所有
      * @param
      * @return List<Shopping></>
      */
-    public List<Shopping> findAllShopInfo();
+    public List<Shopping> loadPage();
+    /**总行数
+     * @param
+     * @return
+     */
+    public int ToTalCount();
 }
