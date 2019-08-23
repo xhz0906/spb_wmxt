@@ -5,10 +5,10 @@ import lombok.Data;
 import java.io.Serializable;
 
 public class Shopping implements Serializable {
-    private int shopId;
-    private String sname;
-    private String possessor;
-    private String store_addressl;
+    private int shopId;//店铺编码
+    private String sname;//店铺名
+    private String possessor;//所有人
+    private String store_addressl;//店铺地址
 
     public Shopping() {
     }
