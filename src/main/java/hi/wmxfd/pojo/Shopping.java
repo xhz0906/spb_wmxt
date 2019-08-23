@@ -5,60 +5,60 @@ import lombok.Data;
 import java.io.Serializable;
 
 public class Shopping implements Serializable {
-    private int shopId;//店铺编码
-    private String sname;//店铺名
-    private String possessor;//所有人
-    private String store_addressl;//店铺地址
+    private int sId;//店铺编码
+    private String sName;//店铺名
+    private String sphone;//电话
+    private String sadress;//店铺地址
 
     public Shopping() {
     }
 
-    public Shopping(int shopId, String sname, String possessor, String store_addressl) {
-        this.shopId = shopId;
-        this.sname = sname;
-        this.possessor = possessor;
-        this.store_addressl = store_addressl;
+    public Shopping(int sId, String sName, String sphone, String sadress) {
+        this.sId = sId;
+        this.sName = sName;
+        this.sphone = sphone;
+        this.sadress = sadress;
     }
 
-    public int getShopId() {
-        return shopId;
+    public int getsId() {
+        return sId;
     }
 
-    public void setShopId(int shopId) {
-        this.shopId = shopId;
+    public void setsId(int sId) {
+        this.sId = sId;
     }
 
-    public String getSname() {
-        return sname;
+    public String getsName() {
+        return sName;
     }
 
-    public void setSname(String sname) {
-        this.sname = sname;
+    public void setsName(String sName) {
+        this.sName = sName;
     }
 
-    public String getPossessor() {
-        return possessor;
+    public String getSphone() {
+        return sphone;
     }
 
-    public void setPossessor(String possessor) {
-        this.possessor = possessor;
+    public void setSphone(String sphone) {
+        this.sphone = sphone;
     }
 
-    public String getStore_addressl() {
-        return store_addressl;
+    public String getSadress() {
+        return sadress;
     }
 
-    public void setStore_addressl(String store_addressl) {
-        this.store_addressl = store_addressl;
+    public void setSadress(String sadress) {
+        this.sadress = sadress;
     }
 
     @Override
     public String toString() {
         return "Shopping{" +
-                "shopId=" + shopId +
-                ", sname='" + sname + '\'' +
-                ", possessor='" + possessor + '\'' +
-                ", store_addressl='" + store_addressl + '\'' +
+                "sId=" + sId +
+                ", sName='" + sName + '\'' +
+                ", sphone='" + sphone + '\'' +
+                ", sadress='" + sadress + '\'' +
                 '}';
     }
 }
