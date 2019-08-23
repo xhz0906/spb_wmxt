@@ -3,15 +3,16 @@
                         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="hi.wmxfd.mapper.ShopMapper">
     <resultMap id="shopResult" type="shopping">
-        <id property="sId" column="sId"></id>
-        <result property="sName" column="sName"></result>
-        <result property="sphone" column="sphone"></result>
-        <result property="sadress" column="sadress"></result>
+        <id property="shopId" column="shopId"></id>
+        <result property="shopName" column="shopName"></result>
+        <result property="shopAdress" column="shopAdress"></result>
+        <result property="shopTel" column="shopTel"></result>
+        <result property="shopUrl" column="shopUrl"></result>
     </resultMap>
     <select id="loadPage" resultMap="shopResult">
-        select * from tb_shopping
+        select * from tb_shop
     </select>
     <select id="ToTalCount" resultType="int">
-        select count(sId) from tb_shopping
+        select count(shopId) from tb_shop
     </select>
 </mapper>
