@@ -20,4 +20,11 @@ public class ShopServiceImpl implements ShopService {
         PageHelper.startPage(page,rows);
         return shopMapper.loadPage();
     }
+
+    @Override
+    public int calcMaxPage(int rows) {
+        int count=shopMapper.ToTalCount();
+        int maxPage=count%rows==0?count/rows:count/rows+1;
+        return maxPage;
+    }
 }
