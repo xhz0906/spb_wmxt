@@ -1,40 +1,69 @@
-	body {
-	  padding-top: 40px;
-	  padding-bottom: 40px;
-	  background-color: #eee;
-	}
+.main{
+    height: 540px;
+    border-top: 2px solid #cdcdcd;
+    background-color: #EB5525;
+    margin-bottom: 122px;
+    position: relative;
+}
+.main-inner{
+    height: 597px;
+    background: url(../images/big_login.png) 50px bottom no-repeat;
+    position: relative;
+}
+.log-box{
+    width: 296px;
+    min-height: 320px;
+    padding: 20px;
+    position: absolute;
+    top:60px;
+    right: 50px;
+    border-radius: 5px;
+    background: white;
+}
+.code-box{
+    height: 92px;
+    margin-top: 20px;
+}
+.code-box img{
+    width: 92px;
+    height: 92px;
+    float: left;
+}
+.code-box .font-box{
+    width: 120px;
+    height: 92px;
+    float: left;
+    margin-left: 37px;
+}
+.code-box .font{
+    display:table-cell;
+    color: #333333;
+    font-size: 14px;
+    vertical-align:middle;
+    height: 92px;
 
-	.form-signin {
-	  max-width: 330px;
-	  padding: 15px;
-	  margin: 0 auto;
-	}
-	.form-signin .form-signin-heading,
-	.form-signin .checkbox {
-	  margin-bottom: 10px;
-	}
-	.form-signin .checkbox {
-	  font-weight: normal;
-	}
-	.form-signin .form-control {
-	  position: relative;
-	  height: auto;
-	  -webkit-box-sizing: border-box;
-		 -moz-box-sizing: border-box;
-			  box-sizing: border-box;
-	  padding: 10px;
-	  font-size: 16px;
-	}
-	.form-signin .form-control:focus {
-	  z-index: 2;
-	}
-	.form-signin input[type="email"] {
-	  margin-bottom: -1px;
-	  border-bottom-right-radius: 0;
-	  border-bottom-left-radius: 0;
-	}
-	.form-signin input[type="password"] {
-	  margin-bottom: 10px;
-	  border-top-left-radius: 0;
-	  border-top-right-radius: 0;
-	}
+}
+.code-box span{
+    display: inline-block;
+    font-size: 12px;
+}
+.bottom-font{
+    margin-top: 14px;
+    font-size: 14px;
+    text-align: center;
+}
+.bottom-font spaN{
+    font-size: 16px;
+    color:#CC0000;
+    padding: 0 5px;
+    font-weight: bold;
+}
+#loginPageBox .captcha{
+    display: none;
+}
+#loginPageBox .captcha.show{
+    display: block;
+}
+.captcha-wrap{width: 300px;overflow: hidden;}
+.captcha-box{width: 600px;}
+.captcha-item{float: left;width: 296px; margin-right: 4px}

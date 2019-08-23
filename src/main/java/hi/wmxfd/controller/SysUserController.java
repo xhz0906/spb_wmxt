@@ -1,5 +1,6 @@
 package hi.wmxfd.controller;
 
+import hi.wmxfd.pojo.SysUser;
 import hi.wmxfd.service.SysUserService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
@@ -11,12 +12,36 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.HashMap;
+import java.util.Map;
+
 @Controller
 public class SysUserController {
     @Autowired
     private SysUserService sysUserService;
+    //注册
+    @RequestMapping("/reg")
+    public String reg(){
+        return "reg";
+    }
+    @ResponseBody
+    @RequestMapping(value = "/register" )
+    public boolean regView(@RequestParam("uname")String uname ){
+        System.out.println(uname);
+        SysUser user=sysUserService.findUserByLoginName(uname);
+        Map map=new HashMap();
+        map.put("users",user.getLoginName());
+        boolean bool = false;
+        if (user==null){
+            map.put("msg","该用户名已被使用");
+            bool = true;
+        }
+        return bool;
+    }
     //登录
-    @RequestMapping(value = "/login",method = RequestMethod.GET)
+    @RequestMapping(value = "/login")
     public String showLogin(){
         return "login";
     }
@@ -29,10 +54,15 @@ public class SysUserController {
             subject.login(token);
             if (subject.isAuthenticated()) {
                 int rid=sysUserService.findRoleId(loginName);
-                if (rid==1||rid==2){
+                /*if (rid==1||rid==2){
                     return "main";
-                }else{
-                    return "member";
+                }*/
+                if (rid==1){
+                    return "redirect:loginGuanli";
+                }else if (rid==2){
+                    return "redirect:loginShangjia";
+                } else{
+                    return "list";
                 }
             }
         } catch (AuthenticationException e) {
@@ -40,10 +70,29 @@ public class SysUserController {
         }
         return "login";
     }
-    //选择登陆
-    @RequestMapping("/loginHandler")
+    //登录管理员界面
+    @RequestMapping("/loginGuanli")
+    public String loginGuanli(){
+        return "main";
+    }
+    //登录商家界面
+    @RequestMapping("/loginShangjia")
+    public String loginShangjia(){
+        return "main";
+    }
+    @RequiresPermissions(value = ("yhgl"))
+    @RequestMapping("/hi")
+    public String hi(){
+        return "hi";
+    }
+    /*@RequestMapping("/loginHandler")
     public String loginHandler(){
         return "main";
+    }*/
+    //登录前台
+    @RequestMapping("/list")
+    public String listView(){
+        return "list";
     }
 
     //权限不足
