@@ -1,6 +1,6 @@
 package hi.wmxfd.mapper;
 
-import hi.wmxfd.pojo.Shopping;
+import hi.wmxfd.pojo.Shop;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -9,9 +9,9 @@ import java.util.List;
 public interface ShopMapper {
     /**分页展示所有
      * @param
-     * @return List<Shopping></>
+     * @return List<Shop></>
      */
-    public List<Shopping> loadPage();
+    public List<Shop> loadPage();
     /**总行数
      * @param
      * @return
