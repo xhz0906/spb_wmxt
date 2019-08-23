@@ -5,5 +5,5 @@ import hi.wmxfd.pojo.Shopping;
 import java.util.List;
 
 public interface ShopService {
-    public List<Shopping> findAllShopInfo();
+    public List<Shopping> loadPage(int page,int rows);
 }
