@@ -38,13 +38,13 @@
         <form action="register" method="post">
       <div class="boxbd mt20">
         <label class="label">
-          <input type="text" id="uname" name="loginName" value="" class="loginipt key user" placeholder="请输入登录账号" autofocus>
+          <input type="text" id="uname" name="loginName" value="" class="loginipt key user" placeholder="请输入登录账号" >
         </label>
         <label class="label">
-            <input type="text" name="password" value="" class="loginipt key user" placeholder="请输入登录密码" autofocus>
+            <input type="text" id="upwd" name="password" value="" class="loginipt key user" placeholder="请输入登录密码" >
         </label>
         <label class="label">
-            <input type="text" name="emali" value="" class="loginipt key user" placeholder="请输入手机号码" autofocus>
+            <input type="text" name="emali" value="" class="loginipt key user" placeholder="请输入邮箱地址" autofocus>
         </label>
         <button type="submit" name="login" value="" class="button btn-reg" >立即注册</button>
       </div>
@@ -77,25 +77,23 @@
 <script>
     $("#uname").blur(function () {
       var uname=$("#uname").val();
-      $.post("register",{"uname":uname},function (data) {
-          if (data==true){
-              alert("可用");
-          } else {
-              alert("不可以");
-          }
-          /*if (data.msg!=null){
+      if (uname.length==0){
+          alert("用户名不能为空");
+      }
+      $.post("pduname",{"uname":uname},function (data) {
+          if (data.msg!=null){
               alert(data.msg);
-              location.href="reg";
           } else{
               alert("用户名可用");
-              location.href="reg";
-          }*/
-          
+          }
       })
-
     })
 
-
-
+    $("#upwd").blur(function () {
+        var upwd=$("#upwd").val();
+        if (upwd==null){
+            alert("密码不能为空");
+        }
+    })
 </script>
 </html>

@@ -12,6 +12,6 @@ public class SysUser implements Serializable {
     private int state;//状态
     private Date createTime;//创建时间
     private String realname;//真实姓名
-    private String emali;
+    private String userEmali;//邮箱地址
 
 }

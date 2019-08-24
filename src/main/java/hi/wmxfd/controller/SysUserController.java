@@ -27,18 +27,18 @@ public class SysUserController {
         return "reg";
     }
     @ResponseBody
-    @RequestMapping(value = "/register" )
-    public boolean regView(@RequestParam("uname")String uname ){
+    @RequestMapping("/pduname")
+    public Map pduname(@RequestParam("uname")String uname){
         System.out.println(uname);
-        SysUser user=sysUserService.findUserByLoginName(uname);
         Map map=new HashMap();
-        map.put("users",user.getLoginName());
-        boolean bool = false;
-        if (user==null){
+        if (sysUserService.findUserByLoginName(uname)!=null){
             map.put("msg","该用户名已被使用");
-            bool = true;
         }
-        return bool;
+        return map;
+    }
+    @RequestMapping(value = "/register" )
+    public String regView( ){
+       return "login";
     }
     //登录
     @RequestMapping(value = "/login")
