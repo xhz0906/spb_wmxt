@@ -1,6 +1,7 @@
 package hi.wmxfd.controller;
 
 import hi.wmxfd.mapper.ShopMapper;
+import hi.wmxfd.pojo.Shop;
 import hi.wmxfd.pojo.Shopping;
 import hi.wmxfd.service.ShopService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,7 @@ public class ShopController {
         if (page>maxPage){
             page=1;
         }
-        List<Shopping> shoppingList= shopService.loadPage(page,rows);
+        List<Shop> shoppingList= shopService.loadPage(page,rows);
         model.addAttribute("shopList",shoppingList);
         model.addAttribute("maxPage",maxPage);
         model.addAttribute("currentPage",page);

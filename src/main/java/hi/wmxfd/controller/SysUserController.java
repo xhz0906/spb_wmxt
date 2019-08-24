@@ -1,6 +1,5 @@
 package hi.wmxfd.controller;
 
-import hi.wmxfd.pojo.SysUser;
 import hi.wmxfd.service.SysUserService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
