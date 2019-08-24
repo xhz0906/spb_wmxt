@@ -27,4 +27,11 @@ public class ShopServiceImpl implements ShopService {
         int maxPage=count%rows==0?count/rows:count/rows+1;
         return maxPage;
     }
+
+    @Override
+    public boolean saveShop(Shop shop) {
+        int count=shopMapper.saveShop(shop);
+        boolean bool=count>0?true:false;
+        return bool;
+    }
 }
