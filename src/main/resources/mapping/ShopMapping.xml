@@ -15,4 +15,7 @@
     <select id="ToTalCount" resultType="int">
         select count(shopId) from tb_shop
     </select>
+    <insert id="saveShop" parameterType="shop" >
+        insert into tb_shop values(#{shopId},#{shopName},#{shopAdress},#{shopTel},#{shopUrl})
+    </insert>
 </mapper>
