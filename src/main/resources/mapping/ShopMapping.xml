@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+                        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="hi.wmxfd.mapper.ShopMapper">
+    <resultMap id="shopResult" type="shop">
+        <id property="shopId" column="shopId"></id>
+        <result property="shopName" column="shopName"></result>
+        <result property="shopAdress" column="shopAdress"></result>
+        <result property="shopTel" column="shopTel"></result>
+        <result property="shopUrl" column="shopUrl"></result>
+    </resultMap>
+    <select id="loadPage" resultMap="shopResult">
+        select * from tb_shop
+    </select>
+    <select id="ToTalCount" resultType="int">
+        select count(shopId) from tb_shop
+    </select>
+</mapper>
