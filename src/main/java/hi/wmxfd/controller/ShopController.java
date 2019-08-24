@@ -32,6 +32,17 @@ public class ShopController {
         model.addAttribute("shopList",shoppingList);
         model.addAttribute("maxPage",maxPage);
         model.addAttribute("currentPage",page);
-        return "";
+        return "shopmanage";
     }
+    @RequestMapping("loadsave")
+    public String loadsave(){
+        return "add";
+    }
+    @RequestMapping()
+    public String saveShop(Shop shop){
+        boolean bool=shopService.saveShop(shop);
+        return bool?"redirect:loadShops":"error";
+    }
+
+
 }
