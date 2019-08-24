@@ -17,4 +17,10 @@ public interface ShopMapper {
      * @return
      */
     public int ToTalCount();
+    /**增加店铺
+     * @param
+     * @return
+     */
+    public int saveShop(Shop shop);
+
 }
