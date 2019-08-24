@@ -9,4 +9,6 @@ public interface ShopService {
     public List<Shop> loadPage(int page, int rows);
     //查询最大页
     public int calcMaxPage(int rows);
+    //增加店铺
+    public boolean saveShop(Shop shop);
 }
