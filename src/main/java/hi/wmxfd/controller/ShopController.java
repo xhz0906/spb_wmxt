@@ -38,7 +38,7 @@ public class ShopController {
     public String loadsave(){
         return "add";
     }
-    @RequestMapping()
+    @RequestMapping("saveShop")
     public String saveShop(Shop shop){
         boolean bool=shopService.saveShop(shop);
         return bool?"redirect:loadShops":"error";
