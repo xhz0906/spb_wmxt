@@ -18,4 +18,31 @@
     <insert id="saveShop" parameterType="shop" >
         insert into tb_shop values(#{shopId},#{shopName},#{shopAdress},#{shopTel},#{shopUrl})
     </insert>
+    <delete id="deleteShop" parameterType="int">
+        delete from tb_shop where shopId=#{shopId}
+    </delete>
+    <delete id="pldel" parameterType="list">
+        delete from tb_shop
+        <where>
+            shopId in
+            <foreach collection="list" item="sid" separator="," open="(" close=")">
+                #{sid}
+            </foreach>
+        </where>
+    </delete>
+    <select id="loadByShopId" parameterType="int" resultType="shop">
+        select * from tb_shop where shopId=#{shopId}
+    </select>
+    <update id="updateShop" parameterType="shop">
+        update tb_shop set shopName=#{shopName},shopAdress=#{shopAdress},shopTel=#{shopTel},shopUrl=#{shopUrl} where shopId=#{shopId}
+    </update>
+    <select id="mohuShop" resultMap="shopResult" parameterType="string">
+        select * from tb_shop
+        <where>
+            <if test="shopName!=null and shopName!='' ">
+                and shopName like concat(concat('%',#{shopName},'%'))
+            </if>
+        </where>
+        order by shopId
+    </select>
 </mapper>
