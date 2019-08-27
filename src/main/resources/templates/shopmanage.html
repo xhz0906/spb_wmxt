@@ -135,7 +135,7 @@
                         </div>
                         <button type="submit" class="btn btn-warning"><i class="glyphicon glyphicon-search"></i> 查询</button>
                     </form>
-                    <form action="......" method="post">
+                    <form action="pldel" method="post">
                         <button type="submit" class="btn btn-danger" style="float:right;margin-left:10px;"><i class=" glyphicon glyphicon-remove"></i> 删除</button>
                         <button type="button" class="btn btn-primary" style="float:right;" onclick="window.location.href='loadsave'"><i class="glyphicon glyphicon-plus"></i> 新增</button>
                         <br>
@@ -164,8 +164,8 @@
                                     <td th:text="${s.shopUrl}"></td>
                                     <td>
                                         <a type="button" class="btn btn-success btn-xs" th:href="assignRole"><i class=" glyphicon glyphicon-check"></i></a>
-                                        <a type="button" class="btn btn-primary btn-xs" th:href="@{loadByUserId(userId=${s.shopId})}"><i class=" glyphicon glyphicon-pencil"></i></a>
-                                        <a type="button" class="btn btn-danger btn-xs" th:href="@{deleteUser(userId=${s.shopId})}"><i class=" glyphicon glyphicon-remove"></i></a>
+                                        <a type="button" class="btn btn-primary btn-xs" th:href="@{loadByShopId(shopId=${s.shopId})}"><i class=" glyphicon glyphicon-pencil"></i></a>
+                                        <a type="button" class="btn btn-danger btn-xs" th:href="@{deleteShop(shopId=${s.shopId})}"><i class=" glyphicon glyphicon-remove"></i></a>
                                     </td>
                                 </tr>
                                 </tbody>
