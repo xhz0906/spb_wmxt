@@ -34,4 +34,36 @@ public class ShopServiceImpl implements ShopService {
         boolean bool=count>0?true:false;
         return bool;
     }
+
+    @Override
+    public boolean deleteShop(int shopId) {
+        int count= shopMapper.deleteShop(shopId);
+        boolean bool=count>0?true:false;
+        return bool;
+    }
+
+    @Override
+    public int pldel(List<Integer> ids) {
+        int count=shopMapper.pldel(ids);
+        return count;
+    }
+
+    @Override
+    public Shop loadByShopId(int shopId) {
+        Shop s=shopMapper.loadByShopId(shopId);
+        return s;
+    }
+
+    @Override
+    public boolean updateShop(Shop shop) {
+        int count=shopMapper.updateShop(shop);
+        boolean bool=count>0?true:false;
+        return bool;
+    }
+
+    @Override
+    public List<Shop> mohuShop(String shopName) {
+
+        return shopMapper.mohuShop(shopName);
+    }
 }
