@@ -126,11 +126,11 @@
                     <h3 class="panel-title"><i class="glyphicon glyphicon-th"></i> 数据列表</h3>
                 </div>
                 <div class="panel-body">
-                    <form class="form-inline" action="......" method="post" >
+                    <form class="form-inline" action="muhuShop" method="post" >
                         <div class="form-group has-feedback">
                             <div class="input-group">
                                 <div class="input-group-addon">查询条件</div>
-                                <input class="form-control has-success" type="text" name="userName" placeholder="请输入查询条件">
+                                <input class="form-control has-success" type="text" name="shopName" placeholder="请输入查询条件">
                             </div>
                         </div>
                         <button type="submit" class="btn btn-warning"><i class="glyphicon glyphicon-search"></i> 查询</button>
@@ -143,56 +143,41 @@
                         <div class="table-responsive">
                             <table class="table  table-bordered">
                                 <thead>
-                                <tr >
-                                    <th width="30">#</th>
-                                    <th width="30"><input type="checkbox"></th>
-                                    <th>编号</th>
-                                    <th>店名</th>
-                                    <th>店铺地址</th>
-                                    <th>联系电话</th>
-                                    <th>图片</th>
-                                    <th width="100">操作</th>
-                                </tr>
+                                    <tr >
+                                        <th width="30"><input type="checkbox"></th>
+                                        <th>编号</th>
+                                        <th>店名</th>
+                                        <th>店铺地址</th>
+                                        <th>联系电话</th>
+                                        <th>图片</th>
+                                        <th width="100">操作</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
-                                <tr th:each="s:${shoppingList}">
-                                    <td th:text="${s.shopId}"></td>
-                                    <td><input type="checkbox" name="ids" th:value="${s.shopId}" ></td>
-                                    <td th:text="${s.shopName}"></td>
-                                    <td th:text="${s.shopAdress}"></td>
-                                    <td th:text="${s.shopTel}"></td>
-                                    <td th:text="${s.shopUrl}"></td>
-                                    <td>
-                                        <a type="button" class="btn btn-success btn-xs" th:href="assignRole"><i class=" glyphicon glyphicon-check"></i></a>
-                                        <a type="button" class="btn btn-primary btn-xs" th:href="@{loadByShopId(shopId=${s.shopId})}"><i class=" glyphicon glyphicon-pencil"></i></a>
-                                        <a type="button" class="btn btn-danger btn-xs" th:href="@{deleteShop(shopId=${s.shopId})}"><i class=" glyphicon glyphicon-remove"></i></a>
-                                    </td>
-                                </tr>
+                                    <tr th:each="s:${shops}">
+                                        <td><input type="checkbox" name="ids" th:value="${s.shopId}" ></td>
+                                        <td th:text="${s.shopId}"></td>
+                                        <td th:text="${s.shopName}"></td>
+                                        <td th:text="${s.shopAdress}"></td>
+                                        <td th:text="${s.shopTel}"></td>
+                                        <td th:text="${s.shopUrl}"></td>
+                                        <td>
+                                            <a type="button" class="btn btn-success btn-xs" th:href="assignRole"><i class=" glyphicon glyphicon-check"></i></a>
+                                            <a type="button" class="btn btn-primary btn-xs" th:href="@{loadByShopId(shopId=${s.shopId})}"><i class=" glyphicon glyphicon-pencil"></i></a>
+                                            <a type="button" class="btn btn-danger btn-xs" th:href="@{deleteShop(shopId=${s.shopId})}"><i class=" glyphicon glyphicon-remove"></i></a>
+                                        </td>
+                                    </tr>
                                 </tbody>
 
                                 <tfoot>
-                                <tr>
-                                    <td colspan="6" align="center">
-                                        <a class="btn btn-default" th:href="@{loadShops(page=1)}">首页</a>
-                                        <a class="btn btn-default" th:href="@{loadShops(page=${currentPage-1})}">上一页</a>
-                                        <a class="btn btn-default" th:href="@{loadShops(page=${currentPage+1})}">下一页</a>
-                                        <a class="btn btn-default" th:href="@{loadShops(page=${maxPage})}">末页</a>
-                                    </td>
-                                </tr>
-                                <!--<tr >
-                                    <td colspan="6" align="center">
-                                       <ul class="pagination">
-                                               <li class="disabled"><a href="#">上一页</a></li>
-                                               <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-                                               <li><a href="#">2</a></li>
-                                               <li><a href="#">3</a></li>
-                                               <li><a href="#">4</a></li>
-                                               <li><a href="#">5</a></li>
-                                               <li><a href="#">下一页</a></li>
-                                            </ul>
-                                    </td>
-                                </tr>-->
-
+                                    <tr>
+                                        <td colspan="7" align="center">
+                                            <a class="btn btn-default" th:href="@{loadShops(page=1)}">首页</a>
+                                            <a class="btn btn-default" th:href="@{loadShops(page=${currentPage-1})}">上一页</a>
+                                            <a class="btn btn-default" th:href="@{loadShops(page=${currentPage+1})}">下一页</a>
+                                            <a class="btn btn-default" th:href="@{loadShops(page=${maxPage})}">末页</a>
+                                        </td>
+                                    </tr>
                                 </tfoot>
                             </table>
                         </div>
