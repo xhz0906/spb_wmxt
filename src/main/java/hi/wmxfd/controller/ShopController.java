@@ -1,8 +1,6 @@
 package hi.wmxfd.controller;
 
-import hi.wmxfd.mapper.ShopMapper;
 import hi.wmxfd.pojo.Shop;
-import hi.wmxfd.pojo.Shopping;
 import hi.wmxfd.service.ShopService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,8 +27,8 @@ public class ShopController {
         if (page>maxPage){
             page=1;
         }
-        List<Shop> shoppingList= shopService.loadPage(page,rows);
-        model.addAttribute("shopList",shoppingList);
+        List<Shop> shops= shopService.loadPage(page,rows);
+        model.addAttribute("shops",shops);
         model.addAttribute("maxPage",maxPage);
         model.addAttribute("currentPage",page);
         return "shopmanage";
@@ -70,7 +68,7 @@ public class ShopController {
         return bool?"redirect:loadShops":"error";
     }
     @RequestMapping("muhuShop")
-    public String mohuShop(@RequestParam(required =false,defaultValue = "1")int page,
+    public String mohuShop(@RequestParam(required = false,defaultValue = "1")int page,
                            @RequestParam(required = false,defaultValue = "5")int rows,
                            Model model,String shopName){
         int maxPage=shopService.calcMaxPage(rows);
