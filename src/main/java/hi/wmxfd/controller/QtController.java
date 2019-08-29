@@ -1,7 +1,10 @@
 package hi.wmxfd.controller;
 
+import hi.wmxfd.pojo.SysUser;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class QtController {
@@ -14,15 +17,7 @@ public class QtController {
         return "shop";
     }
     //详情
-    @RequestMapping("/detailsp")
-    public String deTailsp(){
-        return "detailsp";
-    }
-    //加入购物车
-    @RequestMapping("/cart")
-    public String cart(){
-        return "cart";
-    }
+
     //收货地址
     @RequestMapping("/user_address")
     public String user_address(){

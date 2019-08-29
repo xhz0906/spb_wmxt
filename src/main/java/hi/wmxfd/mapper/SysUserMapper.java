@@ -21,9 +21,17 @@ public interface SysUserMapper {
     @return SysPErmissiom对象的集合*/
 
   public List<SysPermission> findPermissionInfo(String loginname);
-
+//根据用户名查角色id
   public int findRoleId(String loginName);
-
-
+  //注册添加
+  public boolean addUser(SysUser sysUser);
+  public boolean addUserRid(int uid);
+  public List<SysUser> loadAll();
+  public int getTotalCount();
+  public List<SysUser> select(String keyword);
+  public int delete(int userId);
+  public int delUser(List<Integer> ids);
+  public SysUser getUserById(int userId);
+  public int update(SysUser sysUser);
 
 }

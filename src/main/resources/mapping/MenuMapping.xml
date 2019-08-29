@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="hi.wmxfd.mapper.MenuMapper">
+    <select id="loadMenu" resultType="Menu" parameterType="int">
+        SELECT m.*
+        FROM tb_menu m,
+        tb_shop s,
+        tb_shop_menu sm
+        WHERE
+        s.shopId=sm.shopId
+        AND sm.menuId=m.menuId
+        AND s.shopId=#{shopId}
+    </select>
+    <select id="findMenu" parameterType="int" resultType="menu">
+        select * from tb_menu where menuId=#{shopId}
+    </select>
+
+</mapper>

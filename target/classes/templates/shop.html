@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8" />
 <title>DeathGhost-我的店铺</title>
@@ -156,46 +156,13 @@ Author URI: http://www.deathghost.cn
     <!--case1-->
     <div class="menutab show">
      <ul class="products">
-		<li>
-		 <a href="detailsp" target="_blank" title="酸辣土豆丝">
+		<li th:each="m:${session.menuList}">
+		 <a href="detailsp" target="_blank"  th:href="@{detailsp(menuId=${m.menuId})}">
          <img src="upload/01.jpg" class="foodsimgsize">
          </a>
           <a href="#" class="item">
 		 <div>
-		  <p>酸辣土豆丝</p>
-		  <p class="AButton">拖至购物车:￥50.00</p>
-		 </div>
-		 </a>
-		</li>
-		<li>
-		 <a href="detailsp" target="_blank" title="酸辣土豆丝">
-         <img src="upload/02.jpg" class="foodsimgsize">
-         </a>
-          <a href="#" class="item">
-		 <div>
-		  <p>酸辣土豆丝</p>
-		  <p class="AButton">拖至购物车:￥50.00</p>
-		 </div>
-		 </a>
-		</li>
-		<li>
-		 <a href="detailsp" target="_blank" title="酸辣土豆丝">
-         <img src="upload/04.jpg" class="foodsimgsize">
-         </a>
-          <a href="#" class="item">
-		 <div>
-		  <p>酸辣土豆丝</p>
-		  <p class="AButton">拖至购物车:￥50.00</p>
-		 </div>
-		 </a>
-		</li>
-		<li>
-		 <a href="detailsp" target="_blank" title="酸辣土豆丝">
-         <img src="upload/03.jpg" class="foodsimgsize">
-         </a>
-          <a href="#" class="item">
-		 <div>
-		  <p>酸辣土豆丝</p>
+		  <p th:text="${m.menuName}"></p>
 		  <p class="AButton">拖至购物车:￥50.00</p>
 		 </div>
 		 </a>

@@ -15,6 +15,13 @@
         u.userid=ur.user_id
         and u.loginName=#{loginName}
     </select>
+    <!--//添加用户-->
+    <insert id="addUser" parameterType="sysUser" >
+        insert into tb_sys_user values (default ,#{loginName},#{password},#{userEmail},"0000","西安")
+    </insert>
+    <insert id="addUserRid" parameterType="int" >
+        insert into tb_user_role values (#{uid},3)
+    </insert>
     <select id="findPermissionInfo" parameterType="string" resultType="hi.wmxfd.pojo.SysPermission">
         select p.*
         from
@@ -30,4 +37,37 @@
         and rp.permission_id = p.permission_id
         and u.loginName=#{loginName}
     </select>
+    <select id="loadAll" resultType="SysUser">
+        select * from tb_sys_user
+    </select>
+    <select id="select" parameterType="string" resultType="SysUser">
+        select * from tb_sys_user where loginName like concat('%',#{keyword},'%')
+    </select>
+    <delete id="delete" parameterType="int" >
+        delete  from tb_sys_user where userId=#{userId}
+    </delete>
+    <select id="getUserById" parameterType="int" resultType="SysUser">
+        select * from tb_sys_user where userId=#{userId}
+    </select>
+    <update id="update" parameterType="SysUser">
+        update tb_sys_user
+        <trim prefix="set" suffixOverrides=",">
+            <if test="loginName!=null">loginName=#{loginName},</if>
+            <if test="password!=null">password=#{password},</if>
+            <if test="userEmail!=null">userEmail=#{userEmail},</if>
+            <if test="userTel!=null">userTel=#{userTel},</if>
+            <if test="userAdress!=null">userAdress=#{userAdress},</if>
+        </trim>
+        where userId=#{userId}
+    </update>
+    <select id="getTotalCount" resultType="int">
+        select count(userId) from tb_sys_user
+    </select>
+    <delete id="delUser" parameterType="list" >
+        delete from tb_sys_user where userId in
+        <foreach collection="list" item="userId"
+                 open="(" close=")" separator=",">
+            #{userId}
+        </foreach>
+    </delete>
 </mapper>

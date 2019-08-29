@@ -106,7 +106,7 @@ function GetCount() {
 		}
 		setTotal();
 	})
-/*<!---总数---->*/
+/*<!---总数--->*/
 	$(function () {
 		$(".quanxun").click(function () {
 			setTotal();

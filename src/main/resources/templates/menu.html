@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html>
+<head>
+    <meta charset="utf-8"/>
+       <script type="text/javascript">
+
+        (function(document, screen) {if (screen.width < 760) {document.location.href="/mobile/";}}(document, screen));
+    </script>
+
+    <link rel="stylesheet" href="css/common.css"/>
+
+    <link rel="stylesheet" href="css/menuPage.css"/>
+    <title>店铺商品</title>
+</head>
+<body class="day " ng-controller="bodyCtrl"  day-or-night>
+    <section class="common-back" id="wrapBackground">
+
+            <header id="header">
+                <div class="common-width clearfix">
+                    <h1 class="fl">
+                        <a class="logo base-logo" href="index.html">外卖超人</a>
+                    </h1>
+                        <ul class="member" login-box>
+                            <li><a href="/loadShops" class="index">首页</a></li>
+                            <li><a href="mindex" >用户中心</a></li>
+                        </ul>
+
+                </div>
+            </header>
+ <section>
+
+<header class="nav clearfix">
+
+</header>
+        <section class="main-box clearfix" lazy-img-load>
+            <div class="main fl">
+                <div class="inner-main">
+                    <nav class="list-order-nav clearfix" id="list-order-nav">
+                        <ul class="fl">
+                            <li>菜单排序：</li>
+                            <li><a href="javascript:void(0);" class="sort-default active">默认排序</a></li>
+                            <li class="split-line">|</li>
+                            <li><a href="javascript:void(0);" class="sort-sale descend">销量<i class="order-icon"></i></a></li>
+                            <li class="split-line">|</li>
+                            <li><a href="javascript:void(0);" class="sort-price">价格<i class="order-icon"></i></a></li>
+                            <li class="split-line">|</li>
+                        </ul>
+                    </nav>
+                    <div   id="menu-main" class="menu-main">
+                          <div id="tp" th:each="m:${session.menuList}">
+                                       <div>
+                                            <img th:src="${m.menuUrl}"  width="202" height="202" />
+                                       </div>
+                                        <div>
+                                            <span id="name" th:text="${m.menuName}"></span>
+                                        </div>
+                                       <div>
+                                            <span>￥：</span><span  id="price"  th:text="${m.menuPrice}"></span><br>
+                                           <span>已售</span><span style="color:red" th:text="${m.menuTotal}"></span><span>份</span>
+                                       </div>
+                          </div>
+                  </div>
+                </div>
+            </div>
+            <aside class="fl">
+                   <div class="menu-cart">
+                        <h1>购物车</h1>
+                        <table>
+                            <thead>
+                            <tr>
+                                <td>商品</td>
+                                <td>单价</td>
+                                <td>数量</td>
+                                <td>金额</td>
+                                <td>删除</td>
+                            </tr>
+                            </thead>
+                            <tbody id="goods"></tbody>
+                            <tfoot>
+                            <tr>
+                                <td colspan="3" align="right">总计</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+            </aside>
+        </section>
+ <script src="/jquery/jquery-2.1.1.min.js" type="text/javascript">
+        $(function () {
+            $("#tp").click(function () {
+                var name = $("#name").val("");
+                alert(name);
+
+        })
+        //function addshopping(){
+
+         //  var name=$("#name").val;
+        //
+        //
+        //    var price=$("#price").val();
+        //    alert(price);
+        //
+        //     // var html = $("<tr>"    //开始拼接HTML元素，将取到的东西展示到对用的input中
+        //     //     +"<td>"+name+"</td>"
+        //     //     +"<td>"+price+"</td>"
+        //     //     +"<td>"
+        //     //     +"<input type='button' value='-'/>"
+        //     //     +"<input type='text' size='3' readonly='readonly'/>"
+        //     //     +"<input type='button' value='+'/>"
+        //     //     +"</td>"
+        //     //     +"<td>"+price+"</td>"
+        //     //     +"<td align='center'>"
+        //     //     +"<input type='button' value='*'/>"
+        //     //     +"</td></tr>");
+        //     // $("#goods").append(html);
+       //  }
+    </script>
+</body>
+</html>

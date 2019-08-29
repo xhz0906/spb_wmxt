@@ -44,9 +44,9 @@
             <input type="text" id="upwd" name="password" value="" class="loginipt key user" placeholder="请输入登录密码" >
         </label>
         <label class="label">
-            <input type="text" name="emali" value="" class="loginipt key user" placeholder="请输入邮箱地址" autofocus>
+            <input type="email" name="userEmali"  class="loginipt key user" placeholder="请输入邮箱地址" >
         </label>
-        <button type="submit" name="login" value="" class="button btn-reg" >立即注册</button>
+        <button type="submit" id="zhuce" name="login" value="" class="button btn-reg" >立即注册</button>
       </div>
         </form>
           <p class="mt20 tc">注册则表示同意<a href="#" class="o">《会员条款》</a></p>
@@ -77,23 +77,17 @@
 <script>
     $("#uname").blur(function () {
       var uname=$("#uname").val();
-      if (uname.length==0){
-          alert("用户名不能为空");
-      }
-      $.post("pduname",{"uname":uname},function (data) {
+      if (uname.length!=0){
+        $.post("pduname",{"uname":uname},function (data) {
           if (data.msg!=null){
-              alert(data.msg);
+            alert(data.msg);
           } else{
-              alert("用户名可用");
+            alert("用户名可用");
           }
-      })
-    })
+        })
+      }else {
+        alert("用户名不能为空");      }
 
-    $("#upwd").blur(function () {
-        var upwd=$("#upwd").val();
-        if (upwd==null){
-            alert("密码不能为空");
-        }
     })
 </script>
 </html>

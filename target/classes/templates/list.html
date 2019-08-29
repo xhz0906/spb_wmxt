@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8" />
 <title>DeathGhost-产品分类页面</title>
@@ -151,62 +151,27 @@ Author URI: http://www.deathghost.cn
  </a>
 </section>
 <section class="Fsl">
- <ul>
+ <ul th:each="s:${shopList}" style="width: 50%;">
   <li>
-   <a href="shop" target="_blank" title="调用产品名/店铺名"><img src="upload/03.jpg"></a>
+   <img th:src="${s.shopUrl}">
    <hgroup>
-   <h3>【大明宫】***川菜馆</h3>
+   <h3 th:text="${s.shopName}"></h3>
    <h4></h4>
    </hgroup>
-   <p>菜系：川湘菜</p>
-   <p>地址：西安市莲湖区土门十字往右100米</p>
+      <p th:text="${s.shopAdress}"></p>
    <p>人均：20~50元</p>
    <p>
     <span class="Score-l">
-    <img src="images/star-on.png">
-    <img src="images/star-on.png">
-    <img src="images/star-on.png">
-    <img src="images/star-on.png">
-    <img src="images/star-off.png">
-    <span class="Score-v">4.8</span>
+     评分： <span class="Score-v" th:text="${s.shopScore}"></span>
     </span>
-    <span class="DSBUTTON"><a href="shop" target="_blank" class="Fontfff">点外卖</a></span>
+
+       <span class="DSBUTTON"><a th:href="@{loadMenu(shopId=${s.shopId})}" target="_blank" class="Fontfff">点外卖</a></span>
+
    </p>
   </li>
  </ul>
- <aside>
-  <div class="title">热门商家</div>
-  <div class="C-list">
-   <a href="shop" target="_blank" title="店铺名称"><img src="upload/cc.jpg"></a>
-   <p><a href="shop" target="_blank">[大雁塔]店铺名称</a></p>
-   <p>
-   <span>人均：20~50元</span>
-   <span style=" float:right">
-    <img src="images/image01.jpg">
-    <img src="images/image01.jpg">
-    <img src="images/image01.jpg">
-    <img src="images/image01.jpg">
-    <img src="images/star-off.png">
-    <span class="ALscore">4.8</span>
-   </span>
-   </p>
-  </div>
-  <div class="C-list">
-   <a href="shop.html" target="_blank" title="店铺名称"><img src="upload/cc.jpg"></a>
-   <p><a href="shop.html" target="_blank">[大雁塔]店铺名称</a></p>
-   <p>
-   <span>人均：20~50元</span>
-   <span style=" float:right">
-    <img src="images/star-on.png">
-    <img src="images/star-on.png">
-    <img src="images/star-on.png">
-    <img src="images/star-on.png">
-    <img src="images/star-off.png">
-    <span class="ALscore">4.8</span>
-   </span>
-   </p>
-  </div>
- </aside>
+
+
  <div class="TurnPage">
   <a href="#">
   <span class="Prev"><i></i>首页</span>
@@ -219,14 +184,6 @@ Author URI: http://www.deathghost.cn
  </div>
 </section>
 </section>
-<!--End content-->
-<div class="F-link">
-  <span>友情链接：</span>
-  <a href="http://www.deathghost.cn" target="_blank" title="DeathGhost">DeathGhost</a>
-  <a href="http://www.17sucai.com/pins/15966.html" target="_blank" title="免费后台管理模板">绿色清爽版通用型后台管理模板免费下载</a>
-  <a href="http://www.17sucai.com/pins/17567.html" target="_blank" title="果蔬菜类模板源码">HTML5果蔬菜类模板源码</a>
-  <a href="http://www.17sucai.com/pins/14931.html" target="_blank" title="黑色的cms商城网站后台管理模板">黑色的cms商城网站后台管理模板</a>
- </div>
 <footer>
  <section class="Otherlink">
   <aside>

@@ -16,8 +16,30 @@ public class ShopController {
     @Autowired
     private ShopService shopService;
 
-    @RequestMapping("loadShops")
+    @RequestMapping("/loadShops")
     public String loadShops(@RequestParam(required = false,defaultValue = "1")int page,
+                            @RequestParam(required = false,defaultValue = "5")int rows,
+                            Model model){
+        int maxPage=shopService.calcMaxPage(rows);
+        if (page<1){
+            page=maxPage;
+        }
+        if (page>maxPage){
+            page=1;
+        }
+        List<Shop> shopList= shopService.loadPage(page,rows);
+        model.addAttribute("shopList",shopList);
+        model.addAttribute("maxPage",maxPage);
+        model.addAttribute("currentPage",page);
+        return "list";
+    }
+    @RequestMapping("/menu")
+    public String menu(){
+        return "menu";
+    }
+
+    @RequestMapping("/loadShop")
+    public String loadShop(@RequestParam(required = false,defaultValue = "1")int page,
                             @RequestParam(required = false,defaultValue = "5")int rows,
                             Model model){
         int maxPage=shopService.calcMaxPage(rows);
