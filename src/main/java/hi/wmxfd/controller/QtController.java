@@ -28,6 +28,11 @@ public class QtController {
     public String user_orderlist(){
         return "user_orderlist";
     }
+    //订单交易
+    @RequestMapping("/user_transaction")
+    public String user_transaction(){
+        return "user_transaction";
+    }
     //我的留言
     @RequestMapping("/user_message")
     public String user_message(){
